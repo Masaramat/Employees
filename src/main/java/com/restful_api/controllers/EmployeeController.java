@@ -51,7 +51,7 @@ public class EmployeeController {
     }
     @GetMapping(value = "/employees")
     public ResponseEntity<?> getAllEmployees(){
-        Optional<EmployeeView> employees = employeeViewRepository.findAll();
+        List<EmployeeView> employees = employeeViewRepository.findAll();
         // when there is no employee in the table
         if (employees.isEmpty()){
             return ResponseEntity.status(204).body("No employee found");

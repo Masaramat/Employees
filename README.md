@@ -24,6 +24,7 @@ This project is composed of the MVC Architecture and needs only little work to c
         spring.jpa.hibernate.dll-auto=none
         spring.h2.console.enabled=true
 ```
+2. Go to the pom.xml file and reload the project to download dependencies
 2. The models are contained in the Employee.java and Department.java files and to
    Make authentication work I included User.java all this files contain table information
 ```java
@@ -85,6 +86,7 @@ Other class is the employee view which extends employee to create a join between
 ## Running and testing the api
 1. open the RestApplication.java which contains the main method and run it
 2. Once you run the program Luiquibase should create your database migrations and migrate them
+3. If you expirience problem with the migrations start testing the API by Post data APIs
 3. it should show you your application started and give you the port information. if you encounter an error
    like the port is in use; you can go to the application.properties file and change your port number
 ```xml

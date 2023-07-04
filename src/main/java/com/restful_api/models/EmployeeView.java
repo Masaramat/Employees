@@ -12,6 +12,7 @@ public class EmployeeView extends Employee{
     private String department;
     public EmployeeView(int id, String name, String email, String phone, String department, String address, int department_id) {
         super(id, name, email, phone, department_id, address);
+        this.department = department;
     }
 
 

@@ -10,8 +10,8 @@ import java.util.Optional;
 public interface EmployeeViewRepository extends PagingAndSortingRepository<EmployeeView, Long> {
     List<EmployeeView> findAll(Specification<EmployeeView> specification);
 
-    Optional<EmployeeView> findAll();
-    Optional<EmployeeView> findById(Long id);
+    List<EmployeeView> findAll();
+    List<EmployeeView> findById(Long id);
     boolean existsById(Long id);
     int count();
 }
