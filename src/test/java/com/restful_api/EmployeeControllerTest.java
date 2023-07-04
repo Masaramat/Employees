@@ -132,7 +132,7 @@ public class EmployeeControllerTest {
         employee.setAddress("Jan Kwano");
         employee.setEmail("csc@cde.com");
         employee.setPhone("0080965654");
-        employee.setDepartment_id(2);
+        employee.setDepartment_id(1);
         when(employeeRepository.save(any(Employee.class))).thenReturn(employee);
         String requestBody = objectMapper.writeValueAsString(employee);
         mockMvc.perform(post(BASE_URL+"/employee/create").contentType("application/json")

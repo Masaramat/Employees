@@ -200,6 +200,7 @@ When testing on localhost your apis should be as follow
 2. Since authentication is blocking my test classes from executing, I had to disable authentication in the test sequence
 3. Still working on better table joins
 4. Trying to learn better testing technologies (using docker and containers)
+5. Liquibase is active but have minor contriants conflict with JPA. I am still working on it
 
 ## Dependencies and versions
 1. Spring Boot version: 3.1.1
