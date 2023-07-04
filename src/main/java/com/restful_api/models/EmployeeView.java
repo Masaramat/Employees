@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "employee_view")
 @AllArgsConstructor
+@NoArgsConstructor
 public class EmployeeView extends Employee{
-    String department;
+    private String department;
     public EmployeeView(int id, String name, String email, String phone, String department, String address, int department_id) {
         super(id, name, email, phone, department_id, address);
     }
