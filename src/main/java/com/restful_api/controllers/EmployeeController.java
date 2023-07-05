@@ -84,6 +84,7 @@ public class EmployeeController {
 
     @GetMapping(value = "/employee/{id}")
     public ResponseEntity<?> getEmployee(@PathVariable Long id){
+
         if(!employeeViewRepository.existsById(id)){
           return ResponseEntity.badRequest().body("Employee does not exist");
         }

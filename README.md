@@ -201,6 +201,7 @@ When testing on localhost your apis should be as follow
 3. Still working on better table joins
 4. Trying to learn better testing technologies (using docker and containers)
 5. Liquibase is active but have minor contriants conflict with JPA. I am still working on it
+6. You might have a bit of problem with adding first elements (Keep adding againg as this is going to be resseting the seq tables)
 
 ## Dependencies and versions
 1. Spring Boot version: 3.1.1

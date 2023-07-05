@@ -31,7 +31,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/api/auth"))
                         .authorizeHttpRequests((authorize)->authorize
                                 .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
-                                .anyRequest().authenticated())
+                                .anyRequest().hasRole("USER"))
 
                                 .anonymous((anonymous)->anonymous.disable())
                         .sessionManagement((session)->session
