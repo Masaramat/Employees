@@ -195,7 +195,12 @@ When testing on localhost your apis should be as follow
 13. Delete a department (DELETE) API
     http://localhost:8080/api/v1/department/delete/{id}
 
-## More Info
+## Testing
+1. navigate to resful_api\resful_api\src\test\java\com\restful_api\
+2. open EmployeeControllerTest.java
+3. run the class to test all APIs or run each method to test each API
+4. for the AddEmployeeSuccessTest you might need to change the department ID, employee email and phone to pass the test
+
 
 
 ## Disclaimers
