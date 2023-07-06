@@ -106,25 +106,33 @@ public class EmployeeController {
 
 
     @PutMapping(value = "/employee/update/{id}")
-    public ResponseEntity<?> updateEmployee(@PathVariable Integer id, @RequestBody Employee employee){
-        // Checks if the employee to be updated exists in the database
-        if(!employeeRepository.existsById(id)){
-            // sets status code to not found
-            return ResponseEntity.status(404).body("user not found");
-        }
-        Employee updateEmployee = employeeRepository.findById(id);
+    public ResponseEntity<?> updateEmployee(@PathVariable Integer id, @RequestBody Employee employee) throws Exception {
+        try{
+            // Checks if the employee to be updated exists in the database
+            if(!employeeRepository.existsById(id)){
+                // sets status code to not found
+                return ResponseEntity.status(404).body("user not found");
+            }
+            Employee updateEmployee = employeeRepository.findById(id);
 
             updateEmployee.setDepartment(employee.getDepartment());
             updateEmployee.setName(employee.getName());
             updateEmployee.setEmail(employee.getEmail());
             updateEmployee.setPhone(employee.getPhone());
             updateEmployee.setAddress(employee.getAddress());
-        // Case where an unknown error occurs
-        if(employeeRepository.save(updateEmployee).getName() == null){
-           return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unable to update employee");
+            updateEmployee.setDepartment(employee.getDepartment());
+
+            employeeRepository.save(updateEmployee);
+            // success returns 200 status and the updated employee
+            return ResponseEntity.ok().body(updateEmployee);
+
+        }catch (DataIntegrityViolationException ex){
+            throw new DataIntegrityViolationException("Duplicate email or phone");
+        }catch (Exception ex){
+            throw new Exception("Unknown error");
         }
-        // success returns 200 status and the updated employee
-        return ResponseEntity.ok().body(updateEmployee);
+
+
 
     }
 

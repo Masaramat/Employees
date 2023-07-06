@@ -5,6 +5,7 @@ import com.restful_api.dtos.AuthenticationResponse;
 import com.restful_api.dtos.RegisterRequest;
 import com.restful_api.services.AuthenticationService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,12 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest registerRequest){
-        return  ResponseEntity.ok(authenticationService.register(registerRequest));
+        try{
+            return  ResponseEntity.ok(authenticationService.register(registerRequest));
+        }catch (DataIntegrityViolationException ex){
+            throw  new DataIntegrityViolationException("Duplicate registration");
+        }
+
     }
 
     @PostMapping("/login")
