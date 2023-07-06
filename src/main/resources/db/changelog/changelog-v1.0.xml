@@ -83,19 +83,6 @@
         </createTable>
     </changeSet>
 
-
-    <changeSet  author="mangut"  id="4">
-        <createView  catalogName="employees_db"
-                     encoding="UTF-8"
-                     fullDefinition="false"
-                     remarks="To make searching for employee easier"
-                     replaceIfExists="true"
-                     schemaName="employees_db"
-                     viewName="employee_view">SELECT e.*, d.name as department
-                                                FROM employees e
-                                                LEFT JOIN departments d on e.department_id = d.id
-        </createView>
-    </changeSet>
     <changeSet id="5" author="mangut">
         <insert tableName="departments">
             <column name="name" value="ICT"/>

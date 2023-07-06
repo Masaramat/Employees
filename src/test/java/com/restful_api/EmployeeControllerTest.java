@@ -4,10 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.restful_api.controllers.EmployeeController;
 import com.restful_api.models.Department;
 import com.restful_api.models.Employee;
-import com.restful_api.models.EmployeeView;
 import com.restful_api.repositories.DepartmentRepository;
 import com.restful_api.repositories.EmployeeRepository;
-import com.restful_api.repositories.EmployeeViewRepository;
 import com.restful_api.services.JwtService;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
@@ -50,28 +48,13 @@ public class EmployeeControllerTest {
 
     @Mock
     private EmployeeRepository employeeRepository;
-    @Mock private EmployeeViewRepository viewRepository;
     @Mock private DepartmentRepository departmentRepository;
 
     @InjectMocks private EmployeeController employeeController;
 
 //    Creating mock employees
-    EmployeeView employee_1 = new EmployeeView(
-            1,
-            "Mangut Innocent",
-            "innocent@gmail.com",
-            "09087676544",
-            "ICT",
-            "Jankwano",
-            1);
-    EmployeeView employee_2 = new EmployeeView(
-            1,
-            "Mangut Innocent",
-            "innocent@gmail.com",
-            "09087676544",
-            "ICT",
-            "Terminus",
-            1);
+    Employee employee_1 = new Employee();
+    Employee employee_2 = new Employee();
 
     @MockBean
     private JwtService jwtService;
@@ -92,7 +75,7 @@ public class EmployeeControllerTest {
     public void AddEmployee400ErrorTest() throws Exception {
         Department mockDepartment = new Department();
         mockDepartment.setId(1);
-        when(departmentRepository.findById(1)).thenReturn(Optional.of(mockDepartment));
+        when(departmentRepository.findById(1)).thenReturn(mockDepartment);
         Authentication authentication = new UsernamePasswordAuthenticationToken(
                 "mangut@gmail.com",
                 null,
@@ -105,7 +88,7 @@ public class EmployeeControllerTest {
         employee.setAddress("");
         employee.setEmail("");
         employee.setPhone("");
-        employee.setDepartment_id(1);
+        employee.setDepartment(mockDepartment);
         String requestBody = objectMapper.writeValueAsString(employee);
         mockMvc.perform(post(BASE_URL+"/employee/create").contentType("application/json")
                         .content(requestBody))
@@ -118,7 +101,7 @@ public class EmployeeControllerTest {
     public void AddEmployeeSuccessTest() throws Exception {
         Department mockDepartment = new Department();
         mockDepartment.setId(1);
-        when(departmentRepository.findById(1)).thenReturn(Optional.of(mockDepartment));
+        when(departmentRepository.findById(1)).thenReturn(mockDepartment);
         Authentication authentication = new UsernamePasswordAuthenticationToken(
                 "mangut@gmail.com",
                 null,
@@ -132,7 +115,7 @@ public class EmployeeControllerTest {
         employee.setAddress("Jan Kwano");
         employee.setEmail("csc@cde.com");
         employee.setPhone("0080965654");
-        employee.setDepartment_id(1);
+        employee.setDepartment(mockDepartment);
         when(employeeRepository.save(any(Employee.class))).thenReturn(employee);
         String requestBody = objectMapper.writeValueAsString(employee);
         mockMvc.perform(post(BASE_URL+"/employee/create").contentType("application/json")

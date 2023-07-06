@@ -135,7 +135,9 @@ When testing on localhost your apis should be as follow
             "email": "email@mail.com",
             "phone": "09098778766",
             "address": "address",
-            "department_id": 1
+            "department": {
+                "id": 1
+            }
         }
    
     ```
@@ -153,21 +155,23 @@ When testing on localhost your apis should be as follow
 8. Filter employee search by a certain attribute (GET) API
    http://localhost:8080/api/v1/employees/search/{attribute}/{value}
 
-9. Update employee with certain ID (PUT) API
-   http://localhost:8080/api/v1/employee/update/{id}
-   Header:
-   Application/json
-   -request body:
-    ```json
-        {
-            "name": "name",
-            "email": "email@mail.com",
-            "phone": "09098778766",
-            "address": "address",
-            "department_id": 1
-        }
+   9. Update employee with certain ID (PUT) API
+      http://localhost:8080/api/v1/employee/update/{id}
+      Header:
+      Application/json
+      -request body:
+       ```json
+           {
+               "name": "name",
+               "email": "email@mail.com",
+               "phone": "09098778766",
+               "address": "address",
+               "department": {
+                    "id": 1
+                }
+           }
    
-    ```
+       ```
 
 10. Delete employee with certain ID (DELETE) API
     http://localhost:8080/api/v1/employee/delete/{id}
@@ -201,12 +205,12 @@ When testing on localhost your apis should be as follow
 3. Still working on better table joins
 4. Trying to learn better testing technologies (using docker and containers)
 5. Liquibase is active but have minor contriants conflict with JPA. I am still working on it
-6. You might have a bit of problem with adding first elements (Keep adding againg as this is going to be resseting the seq tables)
+6. You might have a bit of problem with adding first elements (Keep adding again as this is going to be reseting the seq tables)
 
 ## Dependencies and versions
 1. Spring Boot version: 3.1.1
 2. spring-boot-starter-actuator
-3. spring-boot-starter-data-jpa (For Data aageent)
+3. spring-boot-starter-data-jpa (For Data management)
 4. spring-boot-starter-web
 5. liquibase-core (For database migrations management)
 6. com.h2database
