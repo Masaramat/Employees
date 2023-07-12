@@ -97,8 +97,14 @@ Changes your port to 9000 you can use any port number.
 4. Once your application is running you can test you application on POSTMAN or Any
    API Testing platform
 
+## Authentication
+1. In order for the APIs to be tested correctly firstly you have to start with the register user 
+2. copy the token in the response or use the created user and use the login API and copy the returned token
+3. use the token to test the other APIs make sure to select Bearer token in the authorization(If you are using postman)
+
 ## APIs and their properties
 When testing on localhost your apis should be as follow
+
 1. register (POST) API
    http://localhost:8080/api/auth/register
    Header:
@@ -144,7 +150,7 @@ When testing on localhost your apis should be as follow
 4. Fetch all employees (GET) API
    http://localhost:8080/api/v1/employees
 5. Fetch employees with pagination (GET) API
-   http://localhost:8080/api/v1/employees/page
+   http://localhost:8080/api/v1/employees/page/1
    replace page with the page number
 6. Fetch employee and sort by (GET) API
    http://localhost:8080/api/v1/employees/sort/{sortBy}/{sortType} (replace {sortBy} with the column you want and {sortType} as asc or desc)
@@ -195,6 +201,7 @@ When testing on localhost your apis should be as follow
 13. Delete a department (DELETE) API
     http://localhost:8080/api/v1/department/delete/{id}
 
+
 ## Testing
 1. navigate to resful_api\resful_api\src\test\java\com\restful_api\
 2. open EmployeeControllerTest.java
@@ -204,10 +211,8 @@ When testing on localhost your apis should be as follow
 
 
 ## Disclaimers
-1. Currently, the authentication system is not working as expected It allows some APIs it is supposed to authenticate
-   even though the login and token system actually works fine
+
 2. Since authentication is blocking my test classes from executing, I had to disable authentication in the test sequence
-3. Still working on better table joins
 4. Trying to learn better testing technologies (using docker and containers)
 5. Liquibase is active but have minor contriants conflict with JPA. I am still working on it
 6. You might have a bit of problem with adding first elements (Keep adding again as this is going to be reseting the seq tables)

@@ -19,6 +19,8 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+
+    // Registers a user with register request
     public AuthenticationResponse register(RegisterRequest registerRequest) {
         var user = User.builder()
                 .name(registerRequest.getName())
@@ -35,6 +37,7 @@ public class AuthenticationService {
                 .build();
     }
 
+    // Response to the authentication request
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(

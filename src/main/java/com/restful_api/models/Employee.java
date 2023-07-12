@@ -27,7 +27,7 @@ public class Employee {
     @Column
     @NotBlank(message = "Address is required")
     private String address;
-
+    // Relationship (many employees to one department
     @ManyToOne
     private Department department;
 

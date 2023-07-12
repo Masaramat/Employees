@@ -45,10 +45,12 @@ public class EmployeeController {
             }
             return ResponseEntity.status(201).body(savedEmployee);
         }catch (DataIntegrityViolationException ex){
+            // throws exception if data integrity is violated
             throw new DataIntegrityViolationException("Department does not exist or duplicate email/phone");
         }
 
     }
+    // Gets all employees
     @GetMapping(value = "/employees")
     public ResponseEntity<?> getAllEmployees(){
         List<Employee> employees = employeeRepository.findAll();
@@ -59,16 +61,17 @@ public class EmployeeController {
             return ResponseEntity.ok(employees);
         }
     }
-    @GetMapping(value = "/employees/page")
-    public ResponseEntity<?> GetPaginatedEmployees(@RequestParam("page") int page){
-
-        Page<Employee> employeePage = employeeRepository.findAll(PageRequest.of(page, 5));
+    @GetMapping(value = "/employees/page/{page}")
+    public ResponseEntity<?> GetPaginatedEmployees(@PathVariable int page){
+        // Using Page to get list of employees with certain number on a page
+        Page<Employee> employeePage = employeeRepository.findAll(PageRequest.of(page, 2));
         if(employeePage.isEmpty()){
             return ResponseEntity.status(204).body("No employee found");
         }
         return ResponseEntity.ok().body(employeePage);
     }
 
+    // Gets list of employees and sort by given parameter
     @GetMapping(value = "/employees/sort/{sortBy}/{sortType}")
     public ResponseEntity<?> getSortedEmployees(
             @PathVariable String sortBy,
@@ -83,7 +86,7 @@ public class EmployeeController {
     }
 
 
-
+    // Gets an employee by id
     @GetMapping(value = "/employee/{id}")
     public ResponseEntity<?> getEmployee(@PathVariable Integer id){
 
@@ -103,15 +106,14 @@ public class EmployeeController {
         return employeeRepository.findAll(specification);
     }
 
-
-
+    // Update employee with certain ID
     @PutMapping(value = "/employee/update/{id}")
     public ResponseEntity<?> updateEmployee(@PathVariable Integer id, @RequestBody Employee employee) throws Exception {
         try{
             // Checks if the employee to be updated exists in the database
             if(!employeeRepository.existsById(id)){
                 // sets status code to not found
-                return ResponseEntity.status(404).body("user not found");
+                return ResponseEntity.status(404).body("Employee not found");
             }
             Employee updateEmployee = employeeRepository.findById(id);
 
@@ -127,6 +129,7 @@ public class EmployeeController {
             return ResponseEntity.ok().body(updateEmployee);
 
         }catch (DataIntegrityViolationException ex){
+            // Throws exception to be caught by ExceptionHandler class
             throw new DataIntegrityViolationException("Duplicate email or phone");
         }catch (Exception ex){
             throw new Exception("Unknown error");
@@ -139,7 +142,7 @@ public class EmployeeController {
     @DeleteMapping(value = "employee/delete/{id}")
     public ResponseEntity<?> deleteEmployee(@PathVariable Integer id){
         if(!employeeRepository.existsById(id)){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User does not exist");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Employee does not exist");
         }
         Employee deletedEmployee = employeeRepository.findById(id);
 

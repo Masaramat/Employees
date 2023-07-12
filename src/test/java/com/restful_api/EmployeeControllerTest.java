@@ -41,7 +41,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @TestPropertySource(properties = "logging.level.org.springframework.security=DEBUG")
 @AutoConfigureMockMvc(addFilters = false)
 public class EmployeeControllerTest {
-    private static String BASE_URL = "/api/v1";
+    private static final String BASE_URL = "/api/v1";
     @Autowired
     private MockMvc mockMvc;
     private ObjectMapper objectMapper = new ObjectMapper();
