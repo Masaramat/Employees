@@ -1,4 +1,4 @@
-package com.restful_api.services;
+package com.restful_api.services.implementations;
 
 import com.restful_api.dtos.AuthenticationRequest;
 import com.restful_api.dtos.AuthenticationResponse;

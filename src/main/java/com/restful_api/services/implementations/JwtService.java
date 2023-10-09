@@ -1,4 +1,4 @@
-package com.restful_api.services;
+package com.restful_api.services.implementations;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

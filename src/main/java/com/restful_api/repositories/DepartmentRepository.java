@@ -6,8 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DepartmentRepository extends CrudRepository<Department, Integer> {
-    Department findById(int id);
+public interface DepartmentRepository extends CrudRepository<Department, Long> {
 
 
 }

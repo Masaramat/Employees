@@ -1,6 +1,6 @@
 package com.restful_api.configurations;
 
-import com.restful_api.services.JwtService;
+import com.restful_api.services.implementations.JwtService;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.security.SignatureException;
 import jakarta.servlet.FilterChain;

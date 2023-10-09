@@ -6,7 +6,7 @@ import com.restful_api.models.Department;
 import com.restful_api.models.Employee;
 import com.restful_api.repositories.DepartmentRepository;
 import com.restful_api.repositories.EmployeeRepository;
-import com.restful_api.services.JwtService;
+import com.restful_api.services.implementations.JwtService;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -29,7 +29,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;

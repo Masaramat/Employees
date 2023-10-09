@@ -3,7 +3,7 @@ package com.restful_api.controllers;
 import com.restful_api.dtos.AuthenticationRequest;
 import com.restful_api.dtos.AuthenticationResponse;
 import com.restful_api.dtos.RegisterRequest;
-import com.restful_api.services.AuthenticationService;
+import com.restful_api.services.implementations.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;

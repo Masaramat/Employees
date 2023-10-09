@@ -1,4 +1,4 @@
-package com.restful_api.controllers;
+package com.restful_api.error_handlers;
 
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.security.SignatureException;
