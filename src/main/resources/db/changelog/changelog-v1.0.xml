@@ -14,7 +14,7 @@
         <createTable
                 schemaName="employees_db"
                 tableName="employees">
-            <column  name="id"  type="int(9)" autoIncrement="true">
+            <column  name="id"  type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
             <column name="name" type="varchar(255)">
@@ -44,7 +44,7 @@
         <createTable
                 schemaName="employees_db"
                 tableName="departments">
-            <column  name="id"  type="int(9)" autoIncrement="true">
+            <column  name="id"  type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
             <column name="name" type="varchar(255)">
@@ -64,7 +64,7 @@
         <createTable
                 schemaName="employees_db"
                 tableName="users">
-            <column  name="id"  type="int(9)" autoIncrement="true">
+            <column  name="id"  type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
             <column name="name" type="varchar(255)">

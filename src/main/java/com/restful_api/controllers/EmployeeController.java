@@ -4,6 +4,7 @@ import com.restful_api.models.Employee;
 import com.restful_api.repositories.EmployeeRepository;
 import com.restful_api.services.interfaces.EmployeeService;
 import com.restful_api.specifications.EmployeeSpecification;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -27,7 +28,7 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @PostMapping(value = "/employee/create")
-    public ResponseEntity<?> createEmployee(@RequestBody Employee employee){
+    public ResponseEntity<?> createEmployee(@Valid @RequestBody Employee employee){
         return employeeService.createEmployee(employee);
     }
     // Gets all employees
@@ -67,7 +68,7 @@ public class EmployeeController {
 
     // Update employee with certain ID
     @PutMapping(value = "/employee/update/{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employee) throws Exception {
+    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @Valid @RequestBody Employee employee) throws Exception {
         return employeeService.updateEmployee(id, employee);
     }
 

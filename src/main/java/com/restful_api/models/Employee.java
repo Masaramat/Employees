@@ -1,6 +1,7 @@
 package com.restful_api.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
@@ -20,6 +21,8 @@ public class Employee {
     private String name;
 
     @Column()
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email format not valid")
     private String email;
     @Column()
     @NotBlank(message = "phone is required")
