@@ -1,5 +1,6 @@
 package com.restful_api.error_handlers;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.security.SignatureException;
 import jakarta.persistence.EntityNotFoundException;
@@ -86,6 +87,11 @@ public class RestExceptionHandler {
 
     @ExceptionHandler(MalformedJwtException.class)
     public ResponseEntity<String> handleMalformedJwtException(MalformedJwtException ex){
+        return ResponseEntity.status(401).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    public  ResponseEntity<String> handleExpiredJwtException(ExpiredJwtException ex){
         return ResponseEntity.status(401).body(ex.getMessage());
     }
 

@@ -27,7 +27,7 @@ import java.util.Optional;
 public class EmployeeController {
     private final EmployeeService employeeService;
 
-    @PostMapping(value = "/employee/create")
+    @PostMapping(value = "/employees")
     public ResponseEntity<?> createEmployee(@Valid @RequestBody Employee employee){
         return employeeService.createEmployee(employee);
     }
@@ -36,7 +36,7 @@ public class EmployeeController {
     public ResponseEntity<?> getAllEmployees(){
         return employeeService.getAllEmployees();
     }
-    @GetMapping(value = "/employees/page/{page}")
+    @GetMapping(value = "/employees/page/{page}/size/{size}")
     public ResponseEntity<?> GetPaginatedEmployees(@PathVariable int page, @PathVariable int size){
         return employeeService.GetPaginatedEmployees(page, size);
     }

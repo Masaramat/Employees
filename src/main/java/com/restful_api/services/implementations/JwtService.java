@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,12 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
+@NoArgsConstructor
 public class JwtService {
-    private static final String SECRET_KEY = "3D42F4A9CEEB41DEB13C69BC0B8B3B6FFD3B3F253D0A923B56CA879E1F083FAA";
+    private static String SECRET_KEY = "3D42F4A9CEEB41DEB13C69BC0B8B3B6FFD3B3F253D0A923B56CA879E1F083FAA";
+    public JwtService(String secretKey) {
+        this.SECRET_KEY = secretKey;
+    }
     public String extractUsername(String jwtToken) {
         return extractClaim(jwtToken, Claims::getSubject);
     }

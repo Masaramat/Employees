@@ -1,7 +1,5 @@
-package com.restful_api;
+package com.restful_api.models;
 
-import com.restful_api.models.Department;
-import com.restful_api.models.Employee;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
