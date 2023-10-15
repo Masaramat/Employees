@@ -37,8 +37,8 @@ public class EmployeeController {
         return employeeService.getAllEmployees();
     }
     @GetMapping(value = "/employees/page/{page}/size/{size}")
-    public ResponseEntity<?> GetPaginatedEmployees(@PathVariable int page, @PathVariable int size){
-        return employeeService.GetPaginatedEmployees(page, size);
+    public ResponseEntity<?> getPaginatedEmployees(@PathVariable int page, @PathVariable int size){
+        return employeeService.getPaginatedEmployees(page, size);
     }
 
     // Gets list of employees and sort by given parameter
@@ -59,7 +59,7 @@ public class EmployeeController {
     // Implements search employee by any attribute. this uses the Like keyword so you can implement dynamic search
     // on your UI
     //Posible to use Pagination to implement a simple form of this request
-    @GetMapping(value = "/employees/search/{attribute}/{value}")
+    @GetMapping(value = "/employee/search/{attribute}/{value}")
     public List<Employee> searchEmployees(
             @PathVariable("attribute") String attribute,
             @PathVariable("value") String value) {
@@ -72,7 +72,7 @@ public class EmployeeController {
         return employeeService.updateEmployee(id, employee);
     }
 
-    @DeleteMapping(value = "employee/delete/{id}")
+    @DeleteMapping(value = "employee/{id}")
     public ResponseEntity<?> deleteEmployee(@PathVariable Long id){
         return employeeService.deleteEmployee(id);
 

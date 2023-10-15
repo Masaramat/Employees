@@ -13,7 +13,7 @@ public interface EmployeeService {
 
     public ResponseEntity<?> getAllEmployees();
 
-    public ResponseEntity<?> GetPaginatedEmployees(int page, int size);
+    public ResponseEntity<?> getPaginatedEmployees(int page, int size);
 
     public ResponseEntity<?> getSortedEmployees(String sortBy, String sortType);
 

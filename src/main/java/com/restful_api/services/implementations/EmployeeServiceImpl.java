@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
@@ -21,6 +22,7 @@ import java.util.Optional;
 
 @AllArgsConstructor
 @Service
+@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
     private  final EmployeeRepository employeeRepository;
@@ -53,11 +55,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public ResponseEntity<?> GetPaginatedEmployees(int page, int size) {
+    public ResponseEntity<?> getPaginatedEmployees(int page, int size) {
         // Using Page to get list of employees with certain number on a page
         Page<Employee> employeePage = employeeRepository.findAll(PageRequest.of(page, size));
         if(employeePage.isEmpty()){
-            return ResponseEntity.status(204).body("No employee found");
+            return ResponseEntity.status(404).body("No employee found");
         }
         return ResponseEntity.ok().body(employeePage);// Using Page to get list of employees with certain number on a page
 
